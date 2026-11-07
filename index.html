@@ -1,56 +1,126 @@
 <!DOCTYPE html>
-<html>
-<meta name="theme-color" content="#000000">
-<link rel="icon" type="image/png" href="icon.png">
-<style>
-body {
-  background: #373F44;
-	font-family: Plus Jakarta Sans, sans-serif;
-	font-size: 12px;
-	text-align: center;
-}
-div {
-	margin: 5px;
-	display: inline-block;
-	vertical-align: top;
-}
-html {
-    color: #fff;
-}
-::-webkit-scrollbar { display: none; }
-</style>
+<html lang="es">
 <head>
-<title>Cámaras CIO Esval - Adv</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>Cámaras CIO Esval - Adv</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    
+    <style>
+        body {
+            background: #373F44;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 10px;
+        }
+
+        /* Ocultar barra de desplazamiento */
+        ::-webkit-scrollbar { display: none; }
+
+        /* Contenedor de las cámaras */
+        #camera-container {
+            margin-top: 10px;
+        }
+
+        /* Estilo compacto original */
+        .cam-box {
+            margin: 5px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        /* Se mantiene el tamaño exacto 220x130 */
+        iframe {
+            width: 220px;
+            height: 130px;
+            border: none;
+            background-color: #111; /* Fondo negro mientras carga */
+            margin-top: 2px;
+        }
+
+        /* Estilos del botón recargar */
+        .footer-controls {
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .btn-reload {
+            background-color: #4a545a; /* Color adaptado al diseño oscuro */
+            color: white;
+            border: 1px solid #ffffff33;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-reload:hover { 
+            background-color: #5d6971; 
+        }
+    </style>
+
+    <!-- Se carga el archivo de configuración externo -->
+    <script src="config.js"></script>
+
 </head>
 <body>
-<div>
-<div>
-Valparaíso<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/5jPpMkg5daM?si=U3oaLVBD_ERQle-M&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div>
-El Quisco<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/8mGoV-mbwTk?si=-I2Lbp5tFdknrlWC&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div>
-Cartagenas<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/lP-Lq6X5shU?si=mAeXFnlLBQbFf2bQ&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div>
-San Antonio<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/ulBAncoXWws?si=yAaeysbcn4gIDoe5&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>  
-<div>
-La Serena<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/S-yZwnKlMsY?si=-8l5b8m-iCTDfOKE&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<div>
-Coquimbo<br>
-<iframe src="https://ucncamcq.ucn.cl:8181/31334bb8-688e-4b31-9024-503a2e88a7b3.html" width="220" height="130" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
-</div>
-<div>
-Viña del Mar<br>
-<iframe width="220" height="130" src="https://www.youtube.com/embed/ysqxSxIqiq0?si=xGqUKtoE6s2QWb6e&autoplay=1&mute=1;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+
+    <!-- Contenedor donde se inyectarán las cámaras pequeñas -->
+    <div id="camera-container"></div>
+
+    <!-- Botón para borrar caché -->
+    <div class="footer-controls">
+        <button class="btn-reload" onclick="borrarCacheYRecargar()">🗑️ Recargar Cámaras</button>
+    </div>
+
+    <script>
+        // Función inteligente para detectar links /live/ o /watch?v=
+        function extraerIdYoutube(url) {
+            if (url.length === 11 && !url.includes('/')) return url;
+            const regex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|live\/)([^#\&\?]*).*/;
+            const coincidencia = url.match(regex);
+            return (coincidencia && coincidencia[2].length === 11) ? coincidencia[2] : url;
+        }
+
+        // Función que dibuja las cámaras en pantalla
+        function cargarCamaras() {
+            const contenedor = document.getElementById('camera-container');
+            
+            camarasConfig.forEach(cam => {
+                let htmlIframe = '';
+                
+                if (cam.tipo === 'youtube') {
+                    const videoId = extraerIdYoutube(cam.enlace);
+                    htmlIframe = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&controls=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+                } else {
+                    htmlIframe = `<iframe src="${cam.enlace}" scrolling="no" allowfullscreen="true"></iframe>`;
+                }
+
+                const caja = document.createElement('div');
+                caja.className = 'cam-box';
+                caja.innerHTML = `
+                    ${cam.nombre}<br>
+                    ${htmlIframe}
+                `;
+                contenedor.appendChild(caja);
+            });
+        }
+
+        // Función para forzar la recarga saltándose la caché
+        function borrarCacheYRecargar() {
+            const urlSinParametros = window.location.href.split('?')[0];
+            window.location.href = urlSinParametros + '?nocache=' + new Date().getTime();
+        }
+
+        // Ejecutar al abrir
+        window.onload = cargarCamaras;
+    </script>
 </body>
 </html>
