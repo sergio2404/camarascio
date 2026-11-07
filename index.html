@@ -42,28 +42,6 @@
             background-color: #111; /* Fondo negro mientras carga */
             margin-top: 2px;
         }
-
-        /* Estilos del botón recargar */
-        .footer-controls {
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .btn-reload {
-            background-color: #4a545a; /* Color adaptado al diseño oscuro */
-            color: white;
-            border: 1px solid #ffffff33;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 12px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-reload:hover { 
-            background-color: #5d6971; 
-        }
     </style>
 
     <!-- Se carga el archivo de configuración externo -->
@@ -74,11 +52,6 @@
 
     <!-- Contenedor donde se inyectarán las cámaras pequeñas -->
     <div id="camera-container"></div>
-
-    <!-- Botón para borrar caché -->
-    <div class="footer-controls">
-        <button class="btn-reload" onclick="borrarCacheYRecargar()">🗑️ Recargar Cámaras</button>
-    </div>
 
     <script>
         // Función inteligente para detectar links /live/ o /watch?v=
@@ -111,12 +84,6 @@
                 `;
                 contenedor.appendChild(caja);
             });
-        }
-
-        // Función para forzar la recarga saltándose la caché
-        function borrarCacheYRecargar() {
-            const urlSinParametros = window.location.href.split('?')[0];
-            window.location.href = urlSinParametros + '?nocache=' + new Date().getTime();
         }
 
         // Ejecutar al abrir
