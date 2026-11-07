@@ -14,12 +14,7 @@ const camarasConfig = [
     { 
         nombre: "Cartagenas", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/watch?v=lP-Lq6X5shU" 
-    },
-    { 
-        nombre: "San Antonio", 
-        tipo: "youtube", 
-        enlace: "https://www.youtube.com/watch?v=ulBAncoXWws" 
+        enlace: "https://www.youtube.com/live/obYSVVM7RB0?si=DsCvNqaasPZwZmX8" 
     },
     { 
         nombre: "La Serena", 
@@ -34,6 +29,6 @@ const camarasConfig = [
     { 
         nombre: "Viña del Mar", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/watch?v=ysqxSxIqiq0" 
+        enlace: "https://www.youtube.com/live/mxirpLYPG3U?si=axvvhO7sqew6s0Ho" 
     }
 ];
