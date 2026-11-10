@@ -7,9 +7,9 @@ const camarasConfig = [
         enlace: "https://www.youtube.com/watch?v=5jPpMkg5daM" 
     },
     { 
-        nombre: "El Quisco", 
+        nombre: "San Antonio", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/watch?v=8mGoV-mbwTk" 
+        enlace: "https://www.youtube.com/live/pobB4JkToSo?si=4GlV0h75GNgxpUeW" 
     },
     { 
         nombre: "Cartagenas", 
