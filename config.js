@@ -24,11 +24,11 @@ const camarasConfig = [
     { 
         nombre: "Viña del Mar", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/live/p1BIG597ELc?si=rqYc2go6XL50I_E7" 
+        enlace: "https://www.youtube.com/live/F4QwT2JimHE?si=6CDEnITiTqqpK_qI" 
     },
     { 
         nombre: "La Serena", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/live/KJQn3tC34Fs?si=wMDUPmc7SFFs_kki" 
+        enlace: "https://www.youtube.com/live/TnYMjA-tQx8?si=WM4qGGZR91sX0XCS" 
     }
 ];
