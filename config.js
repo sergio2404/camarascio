@@ -2,6 +2,11 @@
 // Puedes pegar el ID del video o el enlace completo de YouTube (watch?v= o live/)
 const camarasConfig = [
     { 
+        nombre: "La Serena", 
+        tipo: "youtube", 
+        enlace: "https://www.youtube.com/live/TnYMjA-tQx8?si=WM4qGGZR91sX0XCS" 
+    },
+    { 
         nombre: "Valparaíso", 
         tipo: "youtube", 
         enlace: "https://www.youtube.com/watch?v=5jPpMkg5daM" 
@@ -25,10 +30,5 @@ const camarasConfig = [
         nombre: "Viña del Mar", 
         tipo: "youtube", 
         enlace: "https://www.youtube.com/live/F4QwT2JimHE?si=6CDEnITiTqqpK_qI" 
-    },
-    { 
-        nombre: "La Serena", 
-        tipo: "youtube", 
-        enlace: "https://www.youtube.com/live/TnYMjA-tQx8?si=WM4qGGZR91sX0XCS" 
     }
 ];
