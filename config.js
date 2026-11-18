@@ -4,7 +4,7 @@ const camarasConfig = [
     { 
         nombre: "La Serena", 
         tipo: "youtube", 
-        enlace: "https://www.youtube.com/live/TnYMjA-tQx8?si=WM4qGGZR91sX0XCS" 
+        enlace: "https://www.youtube.com/live/zfeY-lHAWPM?si=yKBBa24qJT1drzTT" 
     },
     { 
         nombre: "Valparaíso", 
